@@ -30,7 +30,7 @@ func main() {
 }
 
 type FileDetails struct {
-	FileName string `json:"fileName"`
+	FileName string  `json:"fileName"`
 	FileSize float64 `json:"fileSize"`
 }
 
@@ -50,8 +50,9 @@ func handleUpload(c *gin.Context) {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 			return
 		}
+
 		// Calculate file size in MB
-		fileSize := float64(file.Size)/(1024*1024)
+		fileSize := float64(file.Size) / (1024 * 1024)
 
 		// Collect file details
 		uploadedFiles = append(uploadedFiles, FileDetails{
